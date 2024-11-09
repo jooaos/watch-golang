@@ -1,0 +1,4 @@
+## Folders
+bin/dev
+build/docker/mariadb/dbdata/
+tmp

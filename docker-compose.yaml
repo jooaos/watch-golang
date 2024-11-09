@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  example:
+    build:
+      dockerfile: build/docker/services/example/Dockerfile
+      context: .
+    entrypoint: /app/example
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./bin/dev/example
+          target: /app/example
+    container_name: watch_example
+    networks:
+      - watch
+  
+  db:
+    build: build/docker/mariadb
+    container_name: watch_mariadb
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./build/docker/mariadb/dbdata:/var/lib/mysql
+      - ./build/docker/mariadb/scripts:/docker-entrypoint-initdb.d
+    environment:
+      - MARIADB_USER=admin
+      - MARIADB_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - watch
+
+networks:
+  watch:
+    driver: bridge
