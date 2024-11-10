@@ -21,7 +21,7 @@ It's necessary that [Docker Compose](https://docs.docker.com/compose/compose-fil
 
 ## Air
 
-The air is responsible for recompile the binaries that will be injected inside the containers, for the installation, check [here]()
+The [air](https://github.com/air-verse/air) is responsible for recompile the binaries that will be injected inside the containers.
 
 
 ## Make (no required)
@@ -33,4 +33,12 @@ To facility the usability of project, we recommend the make installation
 
 # Step by step
 
-1. 
+```
+# Start the application via air
+make air-up service=example
+
+# Up environment
+make up
+
+# Change the example to check the reload
+```
