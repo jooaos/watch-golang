@@ -37,7 +37,7 @@ To facility the usability of project, we recommend the make installation
 # Start the application via air
 make air-up service=example
 
-# Up environment
+# Up containers
 make up
 
 # Change the example to check the reload
