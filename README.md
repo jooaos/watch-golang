@@ -1,44 +1,44 @@
 # About
 
-The project consist in use golang + air + docker compose to make hot reloads and keep using the container concept using light images.
+This project leverages **Go (Golang)**, **Air** and **Docker Compose** to enable hot reloading while maintaining the benefits of containerization with lightweight images.
 
 # How it works?
 
-Here, the docker compose configures and execute the your go application in an isolated environmente, and in each code change, the air detects changes and recompile the binary automatic, without the necessity of restart your container manually.
+In this setup, Docker Compose configures and runs your Go application within an isolated environment. Every time a code change is detected, Air automatically recompiles the binary and the Docker reloads the application with this binary, not requiring a manual container restart.
 
 ## Advantages
 
-1. Dev environment configured and using Docker,
-2. Hot reload to your code during the development,
-3. Facility to scale up your application with new services using docker compose
+1. Fully configured development environment using Docker.
+2. Hot reloading during development to streamline workflows.
+3. Easy scalability: Add new services to your application with Docker Compose.
 
-# Pré-requisito
+# Prerequisites
 
 ## Docker compose
 
-It's necessary that [Docker Compose](https://docs.docker.com/compose/compose-file/) installed in yout host has a version >= 2.22.0, just in this way we can use the [watch mode](https://docs.docker.com/compose/how-tos/file-watch/)
+Ensure that [Docker Compose](https://docs.docker.com/compose/compose-file/) is installed on your system with version **>= 2.22.0**. This is required to take advantage of the [watch mode](https://docs.docker.com/compose/how-tos/file-watch/)
 
 
 ## Air
 
-The [air](https://github.com/air-verse/air) is responsible for recompile the binaries that will be injected inside the containers.
+[Air](https://github.com/air-verse/air) is a tool that handles automatic recompilation of Go binaries whenever code changes are detected.
 
 
 ## Make (no required)
 
-To facility the usability of project, we recommend the make installation
+Although not strictly required, we recommend installing **Make** to simplify project usage
 
-> If you don't want use it, you can access Makefile, copy and paste the command in your terminal
+> If your prefer not use it, you can manually copy and paste the commands from the Makefile into your terminal
 
 
 # Step by step
 
+1. Start the application with Air:
 ```
-# Start the application via air
 make air-up service=example
-
-# Up containers
-make up
-
-# Change the example to check the reload
 ```
+2. Start the containers:
+```
+make up
+```
+3. Make a code change to the ```example``` service and observe the logs to accert the automatic reload.
