@@ -1,3 +1,6 @@
+air-up:
+	@air -c cmd/${service}/.air.toml
+
 down:
 	@docker compose down
 
